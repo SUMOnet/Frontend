@@ -1,0 +1,82 @@
+:root{
+    --bg : white;
+    --bg-navbar: #ecf0f1;
+    --text: black; 
+    font-size: 25px; 
+    margin:0;
+    padding: 0;
+
+*{
+    margin:0;
+    padding: 0;
+}
+}
+/* Nabbar CSS desing START */
+.navbar-container{
+    margin:0;
+    padding: 0;
+    display: inline-flex;
+    width: 100%;
+    height: 94px;
+    background-color: var(--bg-navbar);
+    justify-content: center;
+    gap: 10rem;
+    border-bottom: black 0.5px solid;
+
+
+}
+
+.navbar-items{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    color: black;
+    margin: 10% 5%;
+}
+.navbar-title {
+
+    font-size: 2rem;
+    font-family: 'Times New Roman', Times, serif;
+    font: 900;
+}
+.navbar-title >h2>a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 2rem;
+}
+.navbar-menu{
+    margin:0;
+    padding:0;
+    font-size: 1rem;
+    font-family: 'Times New Roman', Times, serif;
+    font: 0;
+}
+.navbar-menu-list{
+
+    margin:37px;
+    padding:0;
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 4rem;
+
+}
+.navbar-menu-list > li>a{
+    text-decoration: none;
+    color: var(--text);
+}
+.navbar-menu-list > li>a:hover {
+    text-decoration: underline;
+    font: bolder;
+    cursor: pointer;
+
+}
+.active{
+    text-decoration: underline;
+    font: bolder;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    transform: scale(1.3);
+}

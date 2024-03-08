@@ -1,0 +1,118 @@
+.form-container {
+    height: 100%;
+
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .form-wrapper {
+    margin: 0 auto;
+    width: 500px;
+    padding-top: 40px;
+    color: black;
+    position: relative;
+  }
+  
+  .form-group,
+  .form-group-active,
+  .form-group-error {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: 10.5%;
+    transition: background-image 0.7s;
+    -webkit-transition: background-image 0.7s;
+    -moz-transition: background-image 0.7s;
+    -o-transition: background-image 0.7s;
+    width: 566px;
+    padding-top: 20px;
+  }
+  label{
+    margin-bottom: 20px;
+  }
+  label,
+  input,
+  textarea {
+    display: block;
+  }
+  
+  input[type="text"],
+  textarea {
+    width: 100%;
+   
+    border: none;
+    border-radius: 0px;
+    outline: none;
+    padding: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1em;
+    color: #676767;
+    transition: border 0.5s;
+    -webkit-transition: border 0.5s;
+    -moz-transition: border 0.5s;
+    -o-transition: border 0.5s;
+    border: solid 3px black;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+
+  textarea:focus {
+    border: solid 3px black;
+  }
+  
+  textarea {
+    height: 100px;
+    resize: none;
+    overflow: auto;
+  }
+  
+  input[type='submit'] {
+
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 33px;
+    --b: 3px;   /* border thickness */
+    --s: .45em; /* size of the corner */
+    --color: #373B44;
+    
+    padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+    color: var(--color);
+    --_p: var(--s);
+    background:
+      conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+      var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+    transition: .3s linear, color 0s, background-color 0s;
+    outline: var(--b) solid #0000;
+    outline-offset: .6em;
+    font-size: 16px;
+  
+    border: 0;
+  
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+
+  }
+  
+  input[type='submit']:hover {
+    --_p: 0px;
+    outline-color: var(--color);
+    outline-offset: .05em;
+  }
+  input[type='submit']:active{
+    --_p: 0px;
+    outline-color: var(--color);
+    outline-offset: .05em;
+    background: var(--color);
+    color: #fff;
+  }
+  label {
+    font-size: 1rem;
+
+    margin-top: 20px;
+    padding-left: 20px;
+  }
