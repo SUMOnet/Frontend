@@ -1,0 +1,10 @@
+body{
+    background-color:blanchedalmond;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar-container{
+    width: 100%;
+
+}
