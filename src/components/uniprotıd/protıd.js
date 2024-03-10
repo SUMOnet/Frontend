@@ -1,26 +1,48 @@
 "use client"
 import React, { useState } from "react";
-import style from './protıd.css';
+import axios from "axios";
+import style from "./protıd.css";
 import Results from "@/components/results/results";
 import UniProtChart from "../charts/UniProtChart";
-const Protid = ({click}) => {
+
+const Protid = ({ click }) => {
   const sampleData = {
     uniprotID: "P12345",
-    lysine: "K200"
+    lysine: "K200",
   };
-  const [uniProtID, setuniProtID] = useState("");
+  const [uniProtID, setUniProtID] = useState("");
   const [lysine, setLysine] = useState("");
-  const handleLoadSample = () => {
+  const [predictionsData, setPredictionsData] = useState(null); // State to store predictions
 
-    setuniProtID(sampleData.uniprotID);
+  const handleLoadSample = () => {
+    setUniProtID(sampleData.uniprotID);
     setLysine(sampleData.lysine);
   };
 
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    if (typeof uniProtID !== 'string' || isNaN(parseInt(lysine))) {
+      console.error('Invalid input. Please enter a valid UniprotID and lysine position.');
+      return;
+    }
+    const lysinePosition = parseInt(lysine);
+  
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:8000/uniprot-prediction/",
+        {
+          uniprot_id: uniProtID,
+          lysine_position: lysinePosition,
+        }
+      );
 
- 
+      const predictions = response.data;
+      setPredictionsData(predictions);
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error submitting data:", error);
+      // Handle errors, e.g., display an error message to the user
+    }
   };
 
   const mockPredictionsData = {"predictions":[
@@ -60,11 +82,17 @@ const Protid = ({click}) => {
       </div>
       <div className="form-group">
         <label htmlFor="Lysine">Uniprot ID:</label>
-        <input type="text" id="text" value={uniProtID} />
+        <input
+      type="text"
+      id="text"
+       value={uniProtID}
+      onChange={(e) => setUniProtID(e.target.value)}
+/>
+
       </div>
       <div className="form-group">
         <label htmlFor="message">Lysine:</label>
-        <input type="text" id="text" value={lysine} onChange={()=> setLysine()} />
+        <input type="text" id="text" value={lysine} onChange={(e)=> setLysine(e.target.value)} />
       </div>
       <div className="buttons">
         <input type="submit" value="Predict SUMOylation"  onClick={handleSubmit} />
@@ -72,8 +100,8 @@ const Protid = ({click}) => {
 
       </div>
     </div>
-    <Results data={mockPredictionsData}/>
-    <UniProtChart predictionsData ={mockPredictionsData}/>
+    <Results data={predictionsData}/>
+    <UniProtChart predictionsData ={predictionsData}/>
   </div>
   
   );

@@ -4,6 +4,9 @@ import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
 const UniProtChart = ({ predictionsData  }) => {
+  if (!predictionsData || !predictionsData.predictions) {
+    return <p>No predictions available for the chart.</p>;
+  }
   const { predictions } = predictionsData;
   const data = {
     datasets: predictions.map(prediction => ({
@@ -44,7 +47,7 @@ const UniProtChart = ({ predictionsData  }) => {
     },
     plugins: {
       legend: {
-        position: top,
+        position: "top",
         display: false,
       }
 

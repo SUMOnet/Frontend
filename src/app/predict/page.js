@@ -3,6 +3,8 @@ import React from 'react'
 import { useState  } from 'react';
 import Menu from "@/components/menu/menu";
 import Protid from "@/components/uniprotıd/protıd";
+import ProtSequence from '@/components/protsequence/protsequence';
+import FastaFile from '@/components/uploadFasta/uploadfasta';
 import style from  './predict.css'
 function page() {
 
@@ -18,12 +20,8 @@ function page() {
           <Menu onSelection={handleSelectionChange} />
         <div className='menu'>
           {selectedForm === 'uniProtID' && <Protid />}
-          {selectedForm === 'proteinSequence' && <FormB />}
-          {selectedForm === 'FastaFile' && <FormC />}
-        </div>
-        
-        <div>
-        <Protid/>
+          {selectedForm === 'proteinSequence' && <ProtSequence/>}
+          {selectedForm === 'FastaFile' && <FastaFile />}
         </div>
       </div>
 
