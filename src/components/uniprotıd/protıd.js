@@ -21,18 +21,14 @@ const Protid = ({ click }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (typeof uniProtID !== 'string' || isNaN(parseInt(lysine))) {
-      console.error('Invalid input. Please enter a valid UniprotID and lysine position.');
-      return;
-    }
-    const lysinePosition = parseInt(lysine);
+    console.log("Sending data:", { uniprot_id: uniProtID, lysine_position:parseInt(lysine,10) });
   
     try {
       const response = await axios.post(
         "http://127.0.0.1:8000/uniprot-prediction/",
         {
           uniprot_id: uniProtID,
-          lysine_position: lysinePosition,
+          lysine_position: parseInt(lysine, 10)
         }
       );
 
